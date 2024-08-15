@@ -52,7 +52,7 @@ namespace ExemploExplorando.models
             } 
         }
 
-        private string NomeCompleto => $"{_Nome} {_Sobrenome}".ToUpper();
+        public string NomeCompleto => $"{_Nome} {_Sobrenome}".ToUpper();
 
         public int Idade
         {
