@@ -7,6 +7,18 @@ namespace ExemploExplorando.models
 {
     public class Pessoa
     {
+        // Construtor, tem o mesmo nome da classe e é o primeiro item da classe, por convenção fica logo abaixo da classe.
+        public Pessoa()
+        {
+            // Este construtor não recebe nada, serve como valor padrão da classe.
+        }
+
+        public Pessoa(string nomeImputUsuario, string sobrenomeImputUsuario)
+        {
+            // Este construtor recebe nome e sobrenome imputados pelo usuário e agrega para as propriedades.
+            Nome = nomeImputUsuario;
+            Sobrenome = sobrenomeImputUsuario;
+        }
         
         private string _Nome = "";
         private string _Sobrenome = "";
