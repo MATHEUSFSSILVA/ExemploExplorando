@@ -21,4 +21,5 @@ namespace ExemploExplorando.models
             return quantidade;
         }
     }
+    
 }
