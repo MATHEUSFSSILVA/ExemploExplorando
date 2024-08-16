@@ -3,5 +3,5 @@ Aqui estou aperfeiçoando os fundamentos básicos aprendidos no módulo 1 do Boo
 
 Atualmente realizando as aulas de Manipulando valores com C#.
 
-Concluídos:
+Aulas concluídas:
 - Propriedades, Métodos e Construtores com C#.
