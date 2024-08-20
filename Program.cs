@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Globalization;
 using ExemploExplorando.models;
+using Newtonsoft.Json;
+
 
 Pessoa p1 = new Pessoa(nomeImputUsuario: "Matheus", sobrenomeImputUsuario: "Felipe");
 Pessoa p2 = new Pessoa(nomeImputUsuario: "Lucas", sobrenomeImputUsuario: "Rafael");
@@ -241,3 +243,42 @@ int numeroExemploTernario = 20;
 bool ehPar = numeroExemploTernario % 2 == 0;
 
 Console.WriteLine("O número é " + (ehPar ? "PAR": "ÍMPAR"));
+
+
+// NUGET é um gerenciador de pacotes, permite que desenvolvedores compartilhem pacotes e bibliotecas.
+
+// JASON - é um formato de texto que segue a sintaxe do JavaScript, muito usado para transmitir dados entre aplicações.
+
+Console.WriteLine("-------- SERIALIZAÇÃO PARA JASON --------");
+
+DateTime dataVenda = DateTime.Now;
+
+List<Venda> listaVendas = new List<Venda>();    
+
+Venda venda1 = new Venda (1, "Apontador de lápis", 10.53M, dataVenda);
+Venda venda2 = new Venda (2, "Borracha", 12.32M, dataVenda);
+
+listaVendas.Add(venda1);
+listaVendas.Add(venda2);
+
+// SERIALIZANDO EM JASON
+string venda1Serializada = JsonConvert.SerializeObject(listaVendas, Formatting.Indented);
+
+// Escrever e salvar.
+File.WriteAllText("Arquivos/vendas.json", venda1Serializada);
+
+Console.WriteLine(venda1Serializada);
+
+
+Console.WriteLine("-------- DESERIALIZAÇÃO PARA JASON --------");
+// Para deserializar é necessário criar uma classe e criar as propriedades que constam no arquivo Json.
+// Para isso é preciso que as propriedades da classe estejam com o mesmo nome de atributos do arquivo Json. Caso não esteja, resolução na classe VendaDeserializada.
+
+string arquivoJason = File.ReadAllText("Arquivos/vendas.json");
+
+List<VendaDeserializada> listaVendaDeserializada = JsonConvert.DeserializeObject<List<VendaDeserializada>>(arquivoJason);
+
+foreach (VendaDeserializada venda in listaVendaDeserializada)
+{
+    Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, Preço: {venda.Preco:C}, Data: {venda.Data.ToString("dd/MM/yyyy HH:mm")}");    
+}
