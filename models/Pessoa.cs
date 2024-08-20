@@ -13,6 +13,7 @@ namespace ExemploExplorando.models
             // Este construtor não recebe nada, serve como valor padrão da classe.
         }
 
+        // Construtor - Propriedade recebe variável.
         public Pessoa(string nomeImputUsuario, string sobrenomeImputUsuario)
         {
             // Este construtor recebe nome e sobrenome imputados pelo usuário e agrega para as propriedades.
@@ -20,6 +21,14 @@ namespace ExemploExplorando.models
             Sobrenome = sobrenomeImputUsuario;
         }
         
+        // Desconstrutor - Variável recebe Propriedade.
+        public void Deconstruct(out string nome, out string sobrenome)
+        {
+            nome = Nome;
+            sobrenome = Sobrenome;
+        }
+
+
         private string _Nome = "";
         private string _Sobrenome = "";
         private int _Idade = 0;

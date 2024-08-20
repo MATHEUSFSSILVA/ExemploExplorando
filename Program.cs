@@ -167,3 +167,77 @@ foreach (var item in estados)
 {
     Console.WriteLine($"Chave: {item.Key} - Valor: {item.Value}");
 }
+
+
+
+Console.WriteLine("-------- TUPLAS --------");
+// Tuplas, operador ternario e desconstrução de um objeto com C#.
+// As tuplas podem guardar em uma única variável vários tipos de dados.
+
+(int, string, decimal) tupla = (1, "Matheus", 1.67M);
+(int Id, string Nome, decimal Altura) tulaNomeada = (1, "Matheus", 1.67M);
+ValueTuple<int, string, decimal> outroExemplo = (1, "Matheus", 1.67M);
+
+Console.WriteLine(tupla);
+Console.WriteLine($"ID: {tupla.Item1}");
+Console.WriteLine($"Nome: {tupla.Item2}");
+Console.WriteLine($"Altura: {tupla.Item3}");
+
+
+// Após criar uma classe para ler arquivo e retornar uma tupla.
+Console.WriteLine("-------- RETORNO CLASSE TUPLAS --------");
+
+LeituraArquivo arquivoLido = new LeituraArquivo();
+
+var (sucesso, linhasArquivo, quantidadeLinhas) = arquivoLido.LerArquivo("Arquivos/arquivoLeitura.txt");
+
+if (sucesso)
+{
+    Console.WriteLine($"O arquivo foi lido e tem {quantidadeLinhas} linhas.");
+
+    foreach (string linha in linhasArquivo)
+    {
+        Console.WriteLine(linha);
+    }
+}
+else
+{
+    Console.WriteLine("O arquivo não foi lido corretamente.");
+}
+
+// Para descartar uma informação que não iremos usar utilizamos o "_".
+// var (sucesso, linhasArquivo, _) = arquivoLido.LerArquivo("Arquivos/arquivoLeitura.txt");
+
+
+// DESCONSTRUTOR
+Console.WriteLine("-------- DESCONSTRUTOR --------");
+
+
+Pessoa p10 = new Pessoa("Matheus", "Felipe");
+
+(string nome, string sobrenome) = p10;
+
+Console.WriteLine($"{nome} {sobrenome}");
+
+
+// IF CONVENCIONAL
+Console.WriteLine("-------- IF CONVENCIONAL --------");
+
+int numeroExemplo = 20;
+
+if (numeroExemplo % 2 == 0)
+{
+    Console.WriteLine("O número é par.");
+}
+else
+{
+    Console.WriteLine("O número é impar.");
+}
+
+
+// IF TERNÁRIO
+Console.WriteLine("-------- IF TERNÁRIO --------");
+int numeroExemploTernario = 20;
+bool ehPar = numeroExemploTernario % 2 == 0;
+
+Console.WriteLine("O número é " + (ehPar ? "PAR": "ÍMPAR"));
